@@ -1,5 +1,5 @@
-const jokeEl = document.getElementById('joke');
 const jokeBtn = document.getElementById('joke-btn');
+const jokeElement = document.getElementById('joke');
 
 const generateJoke = () => {
   const xhr = new XMLHttpRequest();
@@ -9,11 +9,10 @@ const generateJoke = () => {
   xhr.onreadystatechange = function () {
     if (this.readyState === 4) {
       if (this.status === 200) {
-        // console.log(JSON.parse(this.responseText).value);
-        jokeEl.innerHTML = JSON.parse(this.responseText).value;
-      } else {
-        jokeEl.innerHTML = 'Something Went Wrong (Not Funny)';
+        jokeElement.innerHTML = JSON.parse(this.responseText).value;
       }
+    } else {
+      jokeElement.innerHTML = 'Something went wrong (Not Funny)';
     }
   };
 
